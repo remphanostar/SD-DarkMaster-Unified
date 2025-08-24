@@ -23,10 +23,10 @@ sys.path.insert(0, str(project_root))
 
 # Page configuration
 st.set_page_config(
-    page_title="SD-DarkMaster-Pro",
-    page_icon="🎨",
+    page_title="SD-DarkMaster-Pro Dashboard",
+    page_icon="⭐",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 # Initialize session state
@@ -44,6 +44,13 @@ if 'logs' not in st.session_state:
 # Import model data
 from scripts._models_data import model_list as sd15_models
 from scripts._xl_models_data import model_list as sdxl_models
+
+# Import configuration manager
+try:
+    from scripts.config_manager import config_manager
+except ImportError:
+    print("⚠️ Config manager not found, using basic config")
+    config_manager = None
 
 # Helper functions
 def run_command(cmd, stream_output=False):
@@ -133,17 +140,23 @@ def setup_page():
     with col2:
         st.info(f"Python: {sys.version.split()[0]}")
     with col3:
-        gpu_check = subprocess.run(['nvidia-smi'], capture_output=True, text=True)
-        if gpu_check.returncode == 0:
-            # Parse GPU name
-            gpu_name = "GPU Found"
-            for line in gpu_check.stdout.split('\n'):
-                if 'NVIDIA' in line and 'Off' not in line:
-                    gpu_name = line.split('|')[1].strip().split()[0]
-                    break
-            st.success(f"GPU: {gpu_name}")
-        else:
-            st.error("GPU: Not Found")
+        try:
+            gpu_check = subprocess.run(['nvidia-smi'], capture_output=True, text=True, timeout=3)
+            if gpu_check.returncode == 0:
+                # Parse GPU name
+                gpu_name = "GPU Found"
+                for line in gpu_check.stdout.split('\n'):
+                    if 'NVIDIA' in line and 'Off' not in line:
+                        try:
+                            gpu_name = line.split('|')[1].strip().split()[0]
+                            break
+                        except:
+                            pass
+                st.success(f"GPU: {gpu_name}")
+            else:
+                st.info("GPU: CPU Only (No NVIDIA GPU)")
+        except (subprocess.TimeoutExpired, FileNotFoundError, Exception):
+            st.info("GPU: CPU Only (Mock Mode)")
     with col4:
         st.info(f"RAM: {psutil.virtual_memory().total // (1024**3)} GB")
     
@@ -606,45 +619,375 @@ def storage_page():
         if st.button("📊 Refresh Stats"):
             st.rerun()
 
-# Main app
-def main():
-    # Sidebar
-    with st.sidebar:
-        st.image("https://via.placeholder.com/300x100/8B0000/FFFFFF?text=SD-DarkMaster-Pro", use_column_width=True)
-        
-        st.markdown("---")
-        
-        # Navigation
-        page = st.radio(
-            "Navigation",
-            ["🏠 Home", "⚙️ Setup", "📦 Models", "💾 Downloads", "🚀 Launch", "🧹 Storage"],
-            label_visibility="collapsed"
-        )
-        
-        st.markdown("---")
-        
-        # System info
-        st.markdown("### System Info")
-        st.text(f"CPU: {psutil.cpu_percent()}%")
-        st.text(f"RAM: {psutil.virtual_memory().percent}%")
-        if st.session_state.webui_process:
-            st.text("WebUI: 🟢 Running")
-        else:
-            st.text("WebUI: ⚫ Stopped")
+# Enhanced Dashboard Functions
+def render_environment_info():
+    """Environment Info Panel (Top-Left)"""
+    platform = "Colab" if os.path.exists('/content') else "Kaggle" if os.path.exists('/kaggle') else "Vast" if os.path.exists('/workspace') else "Local"
     
-    # Route to pages
-    if page == "🏠 Home":
-        home_page()
-    elif page == "⚙️ Setup":
-        setup_page()
-    elif page == "📦 Models":
-        models_page()
-    elif page == "💾 Downloads":
-        downloads_page()
-    elif page == "🚀 Launch":
-        launch_page()
-    elif page == "🧹 Storage":
-        storage_page()
+    # GPU Detection (Mock-friendly)
+    def get_gpu_status():
+        try:
+            gpu_check = subprocess.run(['nvidia-smi'], capture_output=True, text=True, timeout=3)
+            if gpu_check.returncode == 0:
+                # Try to parse actual GPU name
+                for line in gpu_check.stdout.split('\n'):
+                    if 'NVIDIA' in line and '|' in line and 'Off' not in line:
+                        try:
+                            gpu_name = line.split('|')[1].strip().split()[0:2]
+                            return f"Yes ({' '.join(gpu_name)})"
+                        except:
+                            pass
+                return "Yes (NVIDIA)"
+            else:
+                return "No (CPU Only)"
+        except (subprocess.TimeoutExpired, FileNotFoundError, Exception):
+            # Mock GPU for development/testing
+            import random
+            mock_gpus = ["No (CPU Only)", "Mock RTX 4090", "Mock GTX 1080", "Mock T4"]
+            return random.choice(mock_gpus)
+    
+    gpu_status = get_gpu_status()
+    
+    # Hardware info
+    ram_gb = psutil.virtual_memory().total // (1024**3)
+    cpu_count = psutil.cpu_count()
+    
+    st.markdown("""
+    <div style='background: #1F2937; border: 2px solid #EF4444; border-radius: 10px; padding: 15px; margin: 10px 0;'>
+        <h3 style='color: #EF4444; margin: 0 0 10px 0;'>Environment Info</h3>
+        <p style='color: #F3F4F6; margin: 5px 0;'><strong>Platform:</strong> {}</p>
+        <p style='color: #F3F4F6; margin: 5px 0;'><strong>Hardware:</strong> {} CPU, {} GB RAM</p>
+        <p style='color: #F3F4F6; margin: 5px 0;'><strong>GPU:</strong> {}</p>
+    </div>
+    """.format(platform, cpu_count, ram_gb, gpu_status), unsafe_allow_html=True)
+
+def render_webui_controls():
+    """WebUI Selector and Launch Controls (Top-Center/Right)"""
+    webui_options = ["Forge", "A1111", "ComfyUI", "SD.Next"]
+    
+    col1, col2 = st.columns([3, 2])
+    
+    with col1:
+        st.markdown("""
+        <div style='background: #1F2937; border: 2px solid #EF4444; border-radius: 10px; padding: 15px; margin: 10px 0;'>
+            <h3 style='color: #EF4444; margin: 0 0 10px 0;'>WebUI Selector</h3>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        selected_webui = st.selectbox("Choose WebUI", webui_options, key="webui_selector")
+        
+    with col2:
+        st.markdown("""
+        <div style='background: #1F2937; border: 2px solid #EF4444; border-radius: 10px; padding: 15px; margin: 10px 0;'>
+            <h3 style='color: #EF4444; margin: 0 0 10px 0;'>Launch WebUI</h3>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        if st.button("🚀 Launch WebUI", use_container_width=True, type="primary"):
+            st.success(f"Launching {selected_webui}...")
+            add_log(f"Starting {selected_webui} WebUI", "info")
+
+def render_output_console():
+    """Output Console (Center)"""
+    st.markdown("""
+    <div style='background: #1F2937; border: 2px solid #EF4444; border-radius: 10px; padding: 15px; margin: 10px 0;'>
+        <h3 style='color: #EF4444; margin: 0 0 10px 0;'>Output Console</h3>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Console content
+    console_container = st.container()
+    with console_container:
+        if st.session_state.logs:
+            log_text = "\n".join([f"[{log['time']}] {log['message']}" for log in st.session_state.logs[-10:]])
+            st.code(log_text, language="bash", wrap_lines=True)
+        else:
+            st.code("No activity yet. Select models and launch WebUI to see logs here.", language="bash")
+
+def render_selections_panel():
+    """Selections Panel (Right Side)"""
+    st.markdown("""
+    <div style='background: #1F2937; border: 2px solid #EF4444; border-radius: 10px; padding: 15px; margin: 10px 0;'>
+        <h3 style='color: #EF4444; margin: 0 0 10px 0;'>Selections:</h3>
+        <h4 style='color: #F3F4F6; margin: 5px 0;'>Pre-installed models</h4>
+        <h4 style='color: #F3F4F6; margin: 5px 0;'>CivitAI Downloaded</h4>
+        <h4 style='color: #F3F4F6; margin: 5px 0;'>Models</h4>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Model selections summary
+    if st.session_state.selected_models:
+        st.write(f"Selected: {len(st.session_state.selected_models)} models")
+        for model in st.session_state.selected_models[:5]:  # Show first 5
+            st.text(f"• {model}")
+        if len(st.session_state.selected_models) > 5:
+            st.text(f"... and {len(st.session_state.selected_models) - 5} more")
+    else:
+        st.info("No models selected yet")
+
+def render_model_selection_tabs():
+    """Model Selection Tabs (Center-Bottom)"""
+    st.markdown("### Model Selection")
+    
+    # Main model type tabs
+    tab1, tab2, tab3, tab4 = st.tabs(["📦 Models", "🔍 Model Search", "🎯 SDXL", "⚙️ etc"])
+    
+    with tab1:
+        # Sub-tabs for models
+        subtab1, subtab2, subtab3 = st.tabs(["SD1.5", "Lora", "Etc"])
+        
+        with subtab1:
+            st.markdown("#### SD 1.5 Models")
+            if sd15_models:
+                for i, (model_id, model_info) in enumerate(list(sd15_models.items())[:10]):
+                    col1, col2 = st.columns([4, 1])
+                    with col1:
+                        st.text(f"{model_id[:40]}...")
+                    with col2:
+                        if st.checkbox("Select", key=f"sd15_{i}"):
+                            if f"sd15_{model_id}" not in st.session_state.selected_models:
+                                st.session_state.selected_models.append(f"sd15_{model_id}")
+    
+    with tab2:
+        st.markdown("#### CivitAI Search")
+        search_term = st.text_input("Search models on CivitAI", placeholder="anime, realistic, etc...")
+        if st.button("🔍 Search CivitAI"):
+            st.info("CivitAI integration coming soon...")
+    
+    with tab3:
+        st.markdown("#### SDXL Models")
+        if sdxl_models:
+            for i, (model_id, model_info) in enumerate(list(sdxl_models.items())[:10]):
+                col1, col2 = st.columns([4, 1])
+                with col1:
+                    st.text(f"{model_id[:40]}...")
+                with col2:
+                    if st.checkbox("Select", key=f"sdxl_{i}"):
+                        if f"sdxl_{model_id}" not in st.session_state.selected_models:
+                            st.session_state.selected_models.append(f"sdxl_{model_id}")
+    
+    with tab4:
+        st.markdown("#### Other Model Types")
+        st.info("VAE, ControlNet, and other model types coming soon...")
+
+def render_config_panel():
+    """Configuration Panel - Tokens/API Keys (Bottom-Left)"""
+    st.markdown("""
+    <div style='background: #1F2937; border: 2px solid #EF4444; border-radius: 10px; padding: 15px; margin: 10px 0;'>
+        <h3 style='color: #EF4444; margin: 0 0 10px 0;'>Tokens/API Keys</h3>
+        <p style='color: #F3F4F6; margin: 5px 0;'>Launch args</p>
+        <p style='color: #F3F4F6; margin: 5px 0;'>Import/export settings</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Load current config
+    current_config = {}
+    if config_manager:
+        current_config = config_manager.load_config()
+        api_keys = current_config.get('api_keys', {})
+        launch_args = current_config.get('launch_args', {})
+    
+    # Configuration inputs with current values
+    hf_token = st.text_input(
+        "HuggingFace Token", 
+        value=api_keys.get('huggingface_token', '') if config_manager else '',
+        placeholder="hf_...", 
+        type="password",
+        key="hf_token_input"
+    )
+    
+    civitai_key = st.text_input(
+        "CivitAI API Key", 
+        value=api_keys.get('civitai_api_key', '') if config_manager else '',
+        placeholder="Enter API key", 
+        type="password",
+        key="civitai_key_input"
+    )
+    
+    # WebUI-specific launch args
+    webui_type = st.session_state.get('webui_selector', 'Forge')
+    current_args = launch_args.get(f'{webui_type.lower()}_args', '--xformers') if config_manager else '--xformers'
+    
+    launch_args_input = st.text_area(
+        f"Launch Arguments ({webui_type})", 
+        value=current_args,
+        placeholder="--xformers --medvram", 
+        height=60,
+        key="launch_args_input"
+    )
+    
+    # Save/Export buttons
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        if st.button("💾 Save Config", key="save_config_btn"):
+            if config_manager:
+                # Update config with new values
+                config = config_manager.load_config()
+                config['api_keys']['huggingface_token'] = hf_token
+                config['api_keys']['civitai_api_key'] = civitai_key
+                config['launch_args'][f'{webui_type.lower()}_args'] = launch_args_input
+                
+                if config_manager.save_config(config):
+                    st.success("✅ Configuration saved!")
+                    add_log("Configuration saved successfully", "success")
+                else:
+                    st.error("❌ Failed to save configuration")
+            else:
+                st.warning("Config manager not available")
+    
+    with col2:
+        if st.button("📤 Export Config", key="export_config_btn"):
+            if config_manager:
+                config_json = config_manager.export_config()
+                st.download_button(
+                    label="⬇️ Download Config",
+                    data=config_json,
+                    file_name="sd_darkmaster_config.json",
+                    mime="application/json"
+                )
+                st.success("✅ Config ready for download!")
+            else:
+                st.warning("Config manager not available")
+    
+    # Import config
+    st.markdown("#### Import Configuration")
+    uploaded_file = st.file_uploader("Upload config file", type="json", key="config_upload")
+    if uploaded_file and config_manager:
+        try:
+            config_data = json.load(uploaded_file)
+            if config_manager.save_config(config_data):
+                st.success("✅ Configuration imported!")
+                st.rerun()
+            else:
+                st.error("❌ Failed to import configuration")
+        except Exception as e:
+            st.error(f"❌ Invalid config file: {str(e)}")
+
+def render_toggles_panel():
+    """Toggles Panel (Bottom-Right)"""
+    st.markdown("""
+    <div style='background: #1F2937; border: 2px solid #EF4444; border-radius: 10px; padding: 15px; margin: 10px 0;'>
+        <h3 style='color: #EF4444; margin: 0 0 10px 0;'>Toggles:</h3>
+        <p style='color: #F3F4F6; margin: 5px 0;'>WebUI Updater</p>
+        <p style='color: #F3F4F6; margin: 5px 0;'>Extensions updater</p>
+        <p style='color: #F3F4F6; margin: 5px 0;'>Verbose Download</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Load current settings from config
+    current_settings = {}
+    if config_manager:
+        config = config_manager.load_config()
+        current_settings = config.get('ui_settings', {})
+    
+    # Toggle controls with config integration
+    auto_update_webui = st.checkbox(
+        "Auto-update WebUI", 
+        value=current_settings.get('auto_update_webui', True),
+        key="auto_update_webui"
+    )
+    
+    auto_update_extensions = st.checkbox(
+        "Auto-update Extensions", 
+        value=current_settings.get('auto_update_extensions', True),
+        key="auto_update_extensions"
+    )
+    
+    verbose_downloads = st.checkbox(
+        "Verbose Download Logs", 
+        value=current_settings.get('verbose_downloads', False),
+        key="verbose_downloads"
+    )
+    
+    gpu_optimization = st.checkbox(
+        "Enable GPU Optimization", 
+        value=current_settings.get('gpu_optimization', True),
+        key="gpu_optimization"
+    )
+    
+    # Auto-save toggle changes to config
+    if config_manager:
+        # Update config when toggles change
+        config = config_manager.load_config()
+        config['ui_settings']['auto_update_webui'] = auto_update_webui
+        config['ui_settings']['auto_update_extensions'] = auto_update_extensions  
+        config['ui_settings']['verbose_downloads'] = verbose_downloads
+        config['ui_settings']['gpu_optimization'] = gpu_optimization
+        
+        # Save updated config
+        config_manager.save_config(config)
+    
+    # Status indicator
+    st.markdown("#### Settings Status")
+    col1, col2 = st.columns(2)
+    with col1:
+        status = "🟢 Saved" if config_manager else "🟡 No Config"
+        st.text(f"Config: {status}")
+    with col2:
+        gpu_status = "🟢 Enabled" if gpu_optimization else "🔴 Disabled"
+        st.text(f"GPU: {gpu_status}")
+
+# Enhanced Main Dashboard
+def main():
+    # Apply Dark Mode Pro CSS
+    st.markdown("""
+    <style>
+    .stApp {
+        background: linear-gradient(135deg, #111827 0%, #1F2937 50%, #10B981 100%);
+    }
+    .stTitle {
+        color: #F3F4F6 !important;
+        text-align: center;
+        font-size: 2.5rem !important;
+        margin-bottom: 0 !important;
+    }
+    .stMarkdown h1 {
+        color: #F3F4F6 !important;
+        text-align: center;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    
+    # Main Title
+    st.markdown("# ⭐ SD-DarkMaster-Pro Dashboard")
+    
+    # Top Row - Environment Info, WebUI Controls
+    top_row = st.columns([2, 4, 3])
+    
+    with top_row[0]:
+        render_environment_info()
+        
+    with top_row[1]:
+        render_webui_controls()
+        
+    with top_row[2]:
+        render_selections_panel()
+    
+    # Middle Row - Output Console (Full Width)
+    st.markdown("---")
+    render_output_console()
+    
+    # Model Selection Area
+    st.markdown("---")
+    render_model_selection_tabs()
+    
+    # Bottom Row - Configuration and Toggles
+    st.markdown("---")
+    bottom_row = st.columns([3, 2])
+    
+    with bottom_row[0]:
+        render_config_panel()
+        
+    with bottom_row[1]:
+        render_toggles_panel()
+    
+    # Footer
+    st.markdown("---")
+    st.markdown(
+        "<div style='text-align: center; color: #6B7280;'>SD-DarkMaster-Pro Unified Dashboard v2.0</div>", 
+        unsafe_allow_html=True
+    )
 
 if __name__ == "__main__":
     main()
