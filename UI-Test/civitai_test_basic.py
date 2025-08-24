@@ -123,6 +123,15 @@ class CivitAIBasic:
             print(f"✅ Download complete: {file_path}")
             return str(file_path)
             
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 401:
+                print(f"❌ Download failed: Unauthorized (401)")
+                print(f"💡 This model requires a CivitAI API key for download")
+                print(f"🔑 Get your free API key at: https://civitai.com/user/account")
+                print(f"📝 Some models may be NSFW-gated or creator-restricted")
+            else:
+                print(f"❌ Download failed: HTTP {e.response.status_code} - {e}")
+            return None
         except Exception as e:
             print(f"❌ Download failed: {e}")
             return None
@@ -236,7 +245,7 @@ def main():
                     # Actions
                     if st.button(f"📖 View Details", key=f"details_{model['id']}"):
                         st.session_state.selected_model = model
-                        st.experimental_rerun()
+                        st.rerun()
                     
                     if st.button(f"🔗 Open on CivitAI", key=f"open_{model['id']}"):
                         model_url = f"https://civitai.com/models/{model['id']}"
@@ -352,7 +361,7 @@ def main():
                 with col3:
                     if st.button(f"🗑️", key=f"delete_{file_path.name}"):
                         file_path.unlink()
-                        st.experimental_rerun()
+                        st.rerun()
         else:
             st.info("No files downloaded yet")
     else:
