@@ -1,0 +1,223 @@
+/* 
+ * SD-DarkMaster-Pro Master Stylesheet
+ * Dark Mode Pro Theme Implementation
+ */
+
+:root {
+  /* Primary Colors */
+  --darkpro-primary: #111827;
+  --darkpro-accent: #10B981;
+  --darkpro-text: #6B7280;
+  --darkpro-surface: #1F2937;
+  --darkpro-border: #374151;
+  
+  /* Status Colors */
+  --darkpro-success: #10B981;
+  --darkpro-warning: #F59E0B;
+  --darkpro-error: #EF4444;
+  --darkpro-info: #3B82F6;
+  
+  /* Text Colors */
+  --darkpro-text-primary: #F3F4F6;
+  --darkpro-text-secondary: #9CA3AF;
+  
+  /* Gradients */
+  --darkpro-gradient-primary: linear-gradient(135deg, #111827 0%, #1F2937 50%, #10B981 100%);
+  --darkpro-gradient-accent: linear-gradient(90deg, #10B981 0%, #059669 100%);
+  
+  /* Typography */
+  --darkpro-font-header: 'Roboto', sans-serif;
+  --darkpro-font-body: 'Roboto', sans-serif;
+  --darkpro-font-code: 'Fira Code', monospace;
+  
+  /* Spacing */
+  --darkpro-spacing-xs: 0.25rem;
+  --darkpro-spacing-sm: 0.5rem;
+  --darkpro-spacing-md: 1rem;
+  --darkpro-spacing-lg: 1.5rem;
+  --darkpro-spacing-xl: 2rem;
+  
+  /* Animations */
+  --darkpro-transition-fast: 0.15s ease-in-out;
+  --darkpro-transition-normal: 0.3s ease-in-out;
+  --darkpro-transition-slow: 0.5s ease-in-out;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--darkpro-primary);
+  color: var(--darkpro-text);
+  font-family: var(--darkpro-font-body);
+  line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--darkpro-font-header);
+  color: var(--darkpro-text-primary);
+  margin-bottom: var(--darkpro-spacing-md);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+/* Buttons */
+.btn {
+  background: var(--darkpro-gradient-accent);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: var(--darkpro-spacing-sm) var(--darkpro-spacing-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--darkpro-transition-normal);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Cards */
+.card {
+  background: var(--darkpro-surface);
+  border: 1px solid var(--darkpro-border);
+  border-radius: 0.75rem;
+  padding: var(--darkpro-spacing-lg);
+  margin-bottom: var(--darkpro-spacing-md);
+  transition: var(--darkpro-transition-normal);
+}
+
+.card:hover {
+  border-color: var(--darkpro-accent);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+/* Forms */
+input, textarea, select {
+  background: var(--darkpro-surface);
+  border: 1px solid var(--darkpro-border);
+  color: var(--darkpro-text);
+  border-radius: 0.5rem;
+  padding: var(--darkpro-spacing-sm);
+  width: 100%;
+  transition: var(--darkpro-transition-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--darkpro-accent);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Checkboxes */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--darkpro-spacing-sm);
+  padding: var(--darkpro-spacing-md);
+  background: var(--darkpro-surface);
+  border-radius: 0.5rem;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  padding: var(--darkpro-spacing-sm);
+  border-radius: 0.25rem;
+  transition: var(--darkpro-transition-fast);
+}
+
+.checkbox-item:hover {
+  background: var(--darkpro-border);
+}
+
+/* Progress Bars */
+.progress {
+  background: var(--darkpro-surface);
+  border-radius: 0.25rem;
+  height: 0.5rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: var(--darkpro-gradient-accent);
+  height: 100%;
+  transition: width var(--darkpro-transition-normal);
+}
+
+/* Modals */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--darkpro-surface);
+  border: 1px solid var(--darkpro-border);
+  border-radius: 1rem;
+  padding: var(--darkpro-spacing-xl);
+  max-width: 600px;
+  width: 90%;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.fade-in {
+  animation: fadeIn var(--darkpro-transition-normal);
+}
+
+.slide-in {
+  animation: slideIn var(--darkpro-transition-normal);
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+}

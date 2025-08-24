@@ -1,0 +1,90 @@
+---
+alwaysApply: true
+description: Documentation organization and maintenance standards for SD-DarkMaster-Unified
+---
+
+# Documentation Standards - SD-DarkMaster-Unified
+
+## 📚 Documentation Structure (MANDATORY)
+
+All documentation MUST follow the numbered importance system in `SD-DarkMaster-Unified/Docs/`:
+
+### Numbered Documentation System
+- **01-06 Essential:** Core project documents (README, Architecture, Technical, etc.)
+- **07-09 UI Focused:** Interface and user experience documents
+- **10 Support:** Troubleshooting and maintenance
+- **11-12 AI-Maintained:** Dynamic status tracking (AUTO-UPDATED)
+- **13 Meta:** Documentation navigation
+
+### Reference Format
+- ALWAYS reference documents by number: `01_README.md`, NOT `README.md`
+- ALWAYS use full numbered filenames in links and references
+- NEVER reference outdated 5-cell architecture documents
+
+## 🤖 AI-Maintained Documents
+
+### Auto-Update Requirements
+These documents MUST be updated automatically by AI agents:
+
+#### [11_DYNAMIC_STATE_PROMPT.md](mdc:SD-DarkMaster-Unified/Docs/11_DYNAMIC_STATE_PROMPT.md)
+- **Update Triggers:** Major changes, status updates, feature completion
+- **Format:** UTC timestamps, semantic versioning, changelog entries
+- **Content:** Real-time project status, metrics, current development
+
+#### [12_AI_HANDOVER_DOCUMENT.md](mdc:SD-DarkMaster-Unified/Docs/12_AI_HANDOVER_DOCUMENT.md)
+- **Update Triggers:** Architecture changes, major context shifts
+- **Format:** Version tracking, context preservation
+- **Content:** Session context, recent changes, technical state
+
+### AI Agent Responsibilities
+- Update AI-maintained documents after significant changes
+- Increment version numbers using semantic versioning
+- Add changelog entries with clear descriptions
+- Cross-reference with related documents
+- Maintain UTC timestamps for all entries
+
+## 📝 Documentation Quality Standards
+
+### Required Elements
+- **Numbered Filename:** All docs must be numbered 01-13
+- **Clear Purpose:** Explicit purpose statement in each document
+- **Target Audience:** Clearly defined audience and prerequisites
+- **Cross-References:** Links use numbered format (e.g., `[01_README.md](01_README.md)`)
+- **Update Tracking:** Last updated timestamps in UTC
+
+### Maintenance Rules
+- Keep all documentation current with unified single-cell architecture
+- Remove any references to obsolete 5-cell architecture
+- Update cross-references when documents are modified
+- Maintain consistency with [13_DOCUMENTATION_INDEX.md](mdc:SD-DarkMaster-Unified/Docs/13_DOCUMENTATION_INDEX.md)
+
+## 🚫 Prohibited Actions
+
+### NEVER Do These
+- Create documentation outside `SD-DarkMaster-Unified/Docs/` folder
+- Reference documents without numbers (use `01_README.md`, not `README.md`)
+- Skip updating AI-maintained documents after major changes
+- Create duplicate documentation files
+- Reference obsolete 5-cell architecture
+
+### Documentation Anti-Patterns
+- Unnumbered documents
+- Scattered documentation across multiple folders
+- Outdated cross-references
+- Missing AI-maintained status updates
+- Inconsistent formatting between documents
+
+## ✅ Validation Checklist
+
+Before committing documentation changes:
+- [ ] All documents numbered correctly (01-13)
+- [ ] AI-maintained documents updated if needed
+- [ ] Cross-references use numbered format
+- [ ] Documentation index reflects changes
+- [ ] No references to obsolete 5-cell architecture
+- [ ] UTC timestamps updated
+- [ ] Quality standards met (purpose, audience, prerequisites)
+
+---
+
+**This rule ensures all documentation follows the established numbered system and maintains the unified single-cell architecture standards.**

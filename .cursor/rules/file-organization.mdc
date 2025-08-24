@@ -1,0 +1,123 @@
+---
+description: File organization and cleanup standards for SD-DarkMaster-Unified
+alwaysApply: true
+---
+
+# File Organization Standards
+
+## 📁 Project Structure (IMMUTABLE)
+
+### Core Directory Structure
+```
+SD-DarkMaster-Unified/
+├── Docs/                    # All documentation (numbered 01-13)
+├── scripts/                 # Core scripts including unified_app.py
+├── modules/                 # Backend modules (core/ and enterprise/)
+├── configs/                 # Configuration files
+├── storage/                 # Unified storage system
+└── notebook/               # Single unified notebook
+```
+
+### Documentation Organization (MANDATORY)
+All documentation MUST be in `SD-DarkMaster-Unified/Docs/` with numbered filenames:
+- **01-06:** Essential documents
+- **07-09:** UI-focused documents  
+- **10:** Support documents
+- **11-12:** AI-maintained documents
+- **13:** Meta documentation
+
+## 🗂️ File Categories and Management
+
+### Production Files (KEEP)
+- **SD-DarkMaster-Unified/** - Main unified project
+- **Utilities/** - Consolidated diagnostic tools
+- Core scripts and modules within unified project
+
+### Legacy Files (SEGREGATED)
+- **5Cell/** - Complete old 5-cell architecture
+- Contains: SD-DarkMaster-Pro/, old configs/, modules/, scripts/, storage/
+- Purpose: Historical reference and knowledge preservation
+
+### Obsolete Files (STAGED FOR REMOVAL)
+- **ToBeDeleted/** - Files marked for cleanup
+- Contains: External docs, browser extensions, temporary files, logs
+- Review before permanent deletion
+
+## 🚫 FILE PLACEMENT RULES
+
+### NEVER Place Files In
+- Root directory (except for essential project files)
+- Multiple scattered locations
+- Unnamed or unnumbered documentation
+- Mixed architecture folders
+
+### ALWAYS Organize By
+- Clear category-based folder structure
+- Numbered importance for documentation
+- Unified project vs legacy separation
+- Functional grouping within categories
+
+## 🔄 File Maintenance Procedures
+
+### Regular Cleanup Tasks
+1. **Documentation Sync** - Ensure all docs in numbered system
+2. **Legacy Isolation** - Keep 5Cell folder separate and complete
+3. **Obsolete Review** - Periodically review ToBeDeleted/ contents
+4. **Cross-Reference Updates** - Maintain accurate file links
+
+### File Creation Guidelines
+- **New Documentation:** Must be numbered and placed in Docs/
+- **New Scripts:** Integrate with unified_app.py or place in appropriate module
+- **Temporary Files:** Create in clearly marked temporary locations
+- **Legacy Files:** Never mix with unified project structure
+
+## 📊 Organization Metrics
+
+### File Distribution Tracking
+Monitor file counts in:
+- **Unified Project:** Core implementation files
+- **Documentation:** 13 numbered documents in Docs/
+- **Legacy (5Cell):** Historical preservation
+- **Utilities:** Consolidated tools
+- **ToBeDeleted:** Staged cleanup files
+
+### Quality Indicators
+- ✅ All docs numbered 01-13 in Docs/ folder
+- ✅ No documentation scattered in root or other folders
+- ✅ Clear separation between unified and legacy architectures
+- ✅ Consolidated utilities in single location
+- ✅ Staged cleanup files properly categorized
+
+## 🔍 File Discovery and Reference
+
+### Locating Files
+- **Documentation:** Always in `SD-DarkMaster-Unified/Docs/` numbered 01-13
+- **Core Code:** Primary in [scripts/unified_app.py](mdc:scripts/unified_app.py)
+- **Modules:** Backend functionality in `modules/core/` and `modules/enterprise/`
+- **Legacy:** Complete 5-cell system in `5Cell/` folder
+
+### Reference Standards
+- Use numbered format for documentation links
+- Reference files by their current organized location
+- Maintain accurate cross-references in [13_DOCUMENTATION_INDEX.md](mdc:SD-DarkMaster-Unified/Docs/13_DOCUMENTATION_INDEX.md)
+- Update links when files are moved or reorganized
+
+## ⚡ Emergency Procedures
+
+### If Files Are Misplaced
+1. **Identify Category** - Determine if unified, legacy, utility, or obsolete
+2. **Proper Location** - Move to correct organized folder
+3. **Update References** - Fix any broken links or references  
+4. **Document Change** - Update relevant documentation
+5. **Verify Organization** - Ensure overall structure maintained
+
+### If Duplicate Files Found
+1. **Compare Content** - Identify differences between duplicates
+2. **Preserve Best Version** - Keep most current and complete version
+3. **Update Location** - Place in proper organized location
+4. **Remove Duplicates** - Delete or move obsolete copies to ToBeDeleted/
+5. **Update Documentation** - Reflect changes in relevant docs
+
+---
+
+**This rule maintains the organized file structure established during the complete repository reorganization.**

@@ -1,0 +1,23 @@
+# SD-DarkMaster-Unified Documentation Index
+# This file tells Cursor where to find project documentation
+
+# Main documentation folder (numbered by importance)
+Docs/
+
+# Key documentation files for AI reference
+Docs/01_README.md
+Docs/02_UNIFIED_SINGLE_CELL_APPROACH.md
+Docs/03_TECHNICAL_ARCHITECTURE_GUIDE.md
+Docs/11_DYNAMIC_STATE_PROMPT.md
+Docs/12_AI_HANDOVER_DOCUMENT.md
+Docs/13_DOCUMENTATION_INDEX.md
+
+# Core implementation files
+scripts/unified_app.py
+notebook/SD-DarkMaster-Pro-Unified.ipynb
+modules/core/
+modules/enterprise/
+
+# Configuration
+configs/
+.cursor/rules/

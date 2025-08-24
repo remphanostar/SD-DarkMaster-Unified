@@ -1,0 +1,32 @@
+{
+    "cursor.chat.defaultDocs": [
+        "SD-DarkMaster-Unified/Docs/01_README.md",
+        "SD-DarkMaster-Unified/Docs/02_UNIFIED_SINGLE_CELL_APPROACH.md",
+        "SD-DarkMaster-Unified/Docs/11_DYNAMIC_STATE_PROMPT.md",
+        "SD-DarkMaster-Unified/Docs/12_AI_HANDOVER_DOCUMENT.md"
+    ],
+    "cursor.ai.prioritizedFiles": [
+        "SD-DarkMaster-Unified/Docs/**/*.md",
+        "scripts/unified_app.py",
+        "notebook/*.ipynb",
+        "modules/**/*.py",
+        ".cursor/rules/*.mdc"
+    ],
+    "files.exclude": {
+        "ToBeDeleted/**": true,
+        "5Cell/**": true,
+        "**/__pycache__/**": true
+    },
+    "files.associations": {
+        "*.mdc": "markdown"
+    },
+    "search.exclude": {
+        "ToBeDeleted/**": true,
+        "5Cell/**": true
+    },
+    "markdown.extension.toc.levels": "1..6",
+    "markdown.extension.tableFormatter.enable": true,
+    "editor.quickSuggestions": {
+        "strings": true
+    }
+}

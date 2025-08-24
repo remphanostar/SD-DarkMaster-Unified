@@ -1,0 +1,134 @@
+---
+description: AI agent maintenance procedures and automated document updates
+alwaysApply: true
+---
+
+# AI Agent Maintenance Standards
+
+## 🤖 Automated Document Maintenance
+
+### Critical AI-Maintained Files
+These documents MUST be automatically updated by AI agents:
+
+#### [11_DYNAMIC_STATE_PROMPT.md](mdc:SD-DarkMaster-Unified/Docs/11_DYNAMIC_STATE_PROMPT.md)
+- **Real-time project status**
+- **Implementation metrics and achievements**
+- **Current development context**
+- **Auto-changelog with UTC timestamps**
+
+#### [12_AI_HANDOVER_DOCUMENT.md](mdc:SD-DarkMaster-Unified/Docs/12_AI_HANDOVER_DOCUMENT.md)
+- **Context for new AI sessions**
+- **Major architectural changes**
+- **User preferences and patterns**
+- **Technical implementation status**
+
+### Update Trigger Keywords
+AI agents MUST update documents when detecting:
+- "major change"
+- "architecture update"  
+- "critical issue"
+- "production ready"
+- "user feedback"
+- "performance problem"
+- "documentation update"
+- "feature completion"
+
+### MANDATORY: Update After EVERY Significant Action
+AI agents MUST update AI-maintained documents after:
+- **ANY code changes** to core files (unified_app.py, modules/)
+- **ANY documentation modifications** 
+- **ANY new features implemented**
+- **ANY bug fixes or solutions provided**
+- **ANY architectural decisions made**
+- **ANY user requests completed**
+- **ANY session that makes meaningful progress**
+
+### CRITICAL: End-of-Session Updates
+Before ending ANY session, AI agents MUST:
+1. **Update 11_DYNAMIC_STATE_PROMPT.md** with current status
+2. **Update 12_AI_HANDOVER_DOCUMENT.md** with session context
+3. **Increment version numbers** appropriately
+4. **Add changelog entries** with UTC timestamps
+5. **Verify cross-references** are current
+
+## 📊 Update Procedures
+
+### Version Control
+- Use semantic versioning (e.g., 2.1.3)
+- Increment patch for minor updates
+- Increment minor for feature changes
+- Increment major for architectural changes
+
+### Changelog Format
+```markdown
+### Version X.Y.Z (YYYY-MM-DD HH:MM UTC)
+- Description of changes
+- Impact assessment
+- Cross-references to related updates
+```
+
+### Status Tracking
+Update these sections in AI-maintained documents:
+- **Project Status:** Current implementation state
+- **Recent Changes:** Last 7 days of modifications
+- **Current Issues:** Active problems and blockers
+- **Success Metrics:** Achievement tracking
+- **Development Context:** Active work areas
+
+## 🔄 Session Handover Protocol
+
+### New AI Agent Orientation
+When a new AI agent starts:
+1. Read [12_AI_HANDOVER_DOCUMENT.md](mdc:SD-DarkMaster-Unified/Docs/12_AI_HANDOVER_DOCUMENT.md) first
+2. Check [11_DYNAMIC_STATE_PROMPT.md](mdc:SD-DarkMaster-Unified/Docs/11_DYNAMIC_STATE_PROMPT.md) for latest status
+3. Review [01_README.md](mdc:SD-DarkMaster-Unified/Docs/01_README.md) for project overview
+4. Update handover document if major context changes occur
+
+### Context Preservation
+Always maintain in handover document:
+- Recent major decisions and their rationale
+- User preferences and established patterns
+- Technical implementation status
+- Known issues and their current status
+- Performance metrics and achievements
+
+## ⚡ Behavioral Guidelines
+
+### Communication Standards
+- Acknowledge successful operations immediately
+- Don't get "stuck" after command completion
+- Reference documents by numbered format
+- Provide clear next steps
+- Be specific about changes and impacts
+
+### Decision Making
+- Auto-update for routine status changes
+- Escalate to user for architectural decisions
+- Preserve user preferences and patterns
+- Maintain consistency with established standards
+
+### Error Handling
+- Document errors in dynamic state prompt
+- Update troubleshooting sections as needed
+- Track resolution patterns for future reference
+- Maintain error logs with timestamps
+
+## 🎯 Success Criteria
+
+### AI Agent Performance
+- Documents updated within same session as changes
+- Version numbers properly incremented
+- Changelogs maintain complete history
+- Cross-references stay current
+- User context preserved across sessions
+
+### Quality Assurance
+- All timestamps in UTC format
+- Semantic versioning followed consistently
+- No information loss during handovers
+- Documentation stays synchronized with code
+- Performance metrics tracked accurately
+
+---
+
+**This rule ensures AI agents maintain consistent, automated documentation updates and preserve context across sessions.**

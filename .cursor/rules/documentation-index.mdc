@@ -1,0 +1,67 @@
+---
+alwaysApply: true
+description: Local documentation index and reference guide for Cursor AI
+---
+
+# Local Documentation Index - SD-DarkMaster-Unified
+
+## 📚 Primary Documentation References
+
+When helping with this project, ALWAYS reference these local documentation files:
+
+### **Essential Documents** (Read First)
+- [01_README.md](mdc:SD-DarkMaster-Unified/Docs/01_README.md) - Project overview and quick start
+- [02_UNIFIED_SINGLE_CELL_APPROACH.md](mdc:SD-DarkMaster-Unified/Docs/02_UNIFIED_SINGLE_CELL_APPROACH.md) - Core architecture
+- [11_DYNAMIC_STATE_PROMPT.md](mdc:SD-DarkMaster-Unified/Docs/11_DYNAMIC_STATE_PROMPT.md) - Current status (AI-maintained)
+- [12_AI_HANDOVER_DOCUMENT.md](mdc:SD-DarkMaster-Unified/Docs/12_AI_HANDOVER_DOCUMENT.md) - AI context (AI-maintained)
+
+### **Technical Documentation**
+- [03_TECHNICAL_ARCHITECTURE_GUIDE.md](mdc:SD-DarkMaster-Unified/Docs/03_TECHNICAL_ARCHITECTURE_GUIDE.md) - Technical implementation
+- [04_PACKAGE_METHOD_GUIDE.md](mdc:SD-DarkMaster-Unified/Docs/04_PACKAGE_METHOD_GUIDE.md) - Deployment guide
+- [05_EXTENSION_COMPATIBILITY_MATRIX.md](mdc:SD-DarkMaster-Unified/Docs/05_EXTENSION_COMPATIBILITY_MATRIX.md) - Extension reference
+- [06_ORIGINAL_DESIGN_REQUIREMENTS.md](mdc:SD-DarkMaster-Unified/Docs/06_ORIGINAL_DESIGN_REQUIREMENTS.md) - Design specs
+
+### **UI Documentation**
+- [07_UI_COMPREHENSIVE_REQUIREMENTS.md](mdc:SD-DarkMaster-Unified/Docs/07_UI_COMPREHENSIVE_REQUIREMENTS.md) - UI specifications
+- [08_UI_ENHANCEMENTS.md](mdc:SD-DarkMaster-Unified/Docs/08_UI_ENHANCEMENTS.md) - UI implementation
+- [09_UI_USER_GUIDE.md](mdc:SD-DarkMaster-Unified/Docs/09_UI_USER_GUIDE.md) - Usage guide
+
+### **Support Documentation**
+- [10_TROUBLESHOOTING_GRADIO.md](mdc:SD-DarkMaster-Unified/Docs/10_TROUBLESHOOTING_GRADIO.md) - Troubleshooting
+- [13_DOCUMENTATION_INDEX.md](mdc:SD-DarkMaster-Unified/Docs/13_DOCUMENTATION_INDEX.md) - Navigation guide
+
+## 🎯 How to Use This Documentation
+
+### **For New AI Sessions:**
+1. Read [12_AI_HANDOVER_DOCUMENT.md](mdc:SD-DarkMaster-Unified/Docs/12_AI_HANDOVER_DOCUMENT.md) first
+2. Check [11_DYNAMIC_STATE_PROMPT.md](mdc:SD-DarkMaster-Unified/Docs/11_DYNAMIC_STATE_PROMPT.md) for current status
+3. Reference [01_README.md](mdc:SD-DarkMaster-Unified/Docs/01_README.md) for project overview
+
+### **For Technical Questions:**
+- Architecture: [02_UNIFIED_SINGLE_CELL_APPROACH.md](mdc:SD-DarkMaster-Unified/Docs/02_UNIFIED_SINGLE_CELL_APPROACH.md)
+- Implementation: [03_TECHNICAL_ARCHITECTURE_GUIDE.md](mdc:SD-DarkMaster-Unified/Docs/03_TECHNICAL_ARCHITECTURE_GUIDE.md)
+- Deployment: [04_PACKAGE_METHOD_GUIDE.md](mdc:SD-DarkMaster-Unified/Docs/04_PACKAGE_METHOD_GUIDE.md)
+
+### **For UI/UX Questions:**
+- Requirements: [07_UI_COMPREHENSIVE_REQUIREMENTS.md](mdc:SD-DarkMaster-Unified/Docs/07_UI_COMPREHENSIVE_REQUIREMENTS.md)
+- Implementation: [08_UI_ENHANCEMENTS.md](mdc:SD-DarkMaster-Unified/Docs/08_UI_ENHANCEMENTS.md)
+- Usage: [09_UI_USER_GUIDE.md](mdc:SD-DarkMaster-Unified/Docs/09_UI_USER_GUIDE.md)
+
+## 🔄 Documentation Maintenance
+
+### **AI Responsibilities:**
+- Update [11_DYNAMIC_STATE_PROMPT.md](mdc:SD-DarkMaster-Unified/Docs/11_DYNAMIC_STATE_PROMPT.md) after major changes
+- Update [12_AI_HANDOVER_DOCUMENT.md](mdc:SD-DarkMaster-Unified/Docs/12_AI_HANDOVER_DOCUMENT.md) for context changes
+- Reference documents by numbered format (01_README.md, not README.md)
+- Cross-reference related documentation when answering questions
+
+### **Key Project Facts:**
+- **Architecture:** Unified single-cell (NOT 5-cell)
+- **Performance:** 80x faster deployment, 68% storage savings
+- **Platform Support:** 12+ platforms with auto-detection
+- **Extension Compatibility:** 95% (29/31 extensions working)
+- **Status:** Production ready, fully documented, completely organized
+
+---
+
+**This rule ensures Cursor AI always knows where to find and how to reference the local documentation system.**

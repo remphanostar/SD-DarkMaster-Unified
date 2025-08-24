@@ -1,0 +1,168 @@
+---
+globs: *.py,*.ipynb,*.md
+description: Development workflow and coding standards for SD-DarkMaster-Unified
+---
+
+# Development Workflow Standards
+
+## 🛠️ Primary Development Focus
+
+### Core Development Areas
+1. **[scripts/unified_app.py](mdc:scripts/unified_app.py)** - Main Streamlit interface (PRIMARY WORK LOCATION)
+2. **Module Integration** - Backend connectivity and optimization
+3. **Theme Refinement** - Dark Mode Pro styling improvements
+4. **Platform Optimization** - Per-platform feature tuning
+5. **Documentation Maintenance** - Keep unified approach current
+
+### Primary Work Location
+**Most development happens in:** `scripts/unified_app.py`
+- Main Streamlit application (600+ lines)
+- Page-based navigation system
+- All UI components and user interactions
+- Integration point for all backend modules
+
+### Development Priorities
+- **Simplicity:** Maintain single-cell approach
+- **Performance:** Optimize for speed and efficiency  
+- **User Experience:** Professional interface with real-time feedback
+- **Compatibility:** Support maximum platform/extension compatibility
+- **Documentation:** Keep comprehensive, organized documentation current
+
+## 🧪 Testing Requirements
+
+### Unified Architecture Testing
+```bash
+# Primary testing commands
+streamlit run scripts/unified_app.py --server.port 8501
+jupyter notebook notebook/SD-DarkMaster-Pro-Unified.ipynb
+python Utilities/comprehensive_testing_tool.py
+```
+
+### Critical Testing Rules
+- **ALWAYS** test unified single-cell approach
+- **NEVER** test obsolete multi-cell architecture  
+- **VERIFY** Streamlit interface functionality
+- **TEST** all page navigation and state persistence
+- **VALIDATE** tunnel creation and public access
+- **CONFIRM** platform detection and optimization
+
+### Performance Validation
+- **Deployment Speed:** ≤ 30 seconds target
+- **Storage Efficiency:** ≥ 68% space savings verification
+- **Extension Compatibility:** Test 29/31 working extensions
+- **Platform Support:** Verify 12+ platform compatibility
+- **UI Responsiveness:** Real-time updates working
+
+## 📝 Code Quality Standards
+
+### Python Code Requirements
+- **Type Hints:** Use type annotations for all functions
+- **Error Handling:** Comprehensive exception handling with user-friendly messages
+- **Logging:** Structured logging with appropriate levels
+- **Documentation:** Docstrings for all classes and functions
+- **Performance:** Async operations where applicable (downloads, I/O)
+
+### Streamlit Standards
+- **State Management:** All persistent data in `st.session_state`
+- **Page Structure:** Consistent navigation and layout
+- **Real-time Updates:** Progress tracking and status displays
+- **Theme Compliance:** Dark Mode Pro styling throughout
+- **Error Display:** User-friendly error messages and recovery options
+
+### Module Integration
+- **Core Modules:** Platform detection, theme engine, storage management
+- **Enterprise Modules:** Advanced features like unified storage and download management
+- **Clean Interfaces:** Well-defined APIs between modules
+- **Configuration:** Centralized configuration management
+- **Extensibility:** Modular design for easy feature addition
+
+## 🔄 Development Workflow
+
+### Feature Development Process
+1. **Plan in Documentation** - Update relevant docs first
+2. **Implement in Modules** - Core functionality in backend modules
+3. **Integrate in UI** - Add to appropriate Streamlit page
+4. **Test Thoroughly** - All testing requirements met
+5. **Update Documentation** - Reflect changes in numbered docs
+6. **Update AI Status** - Trigger AI-maintained document updates
+
+### Code Review Checklist
+- [ ] Maintains single-cell architecture principles
+- [ ] Integrates properly with Streamlit interface
+- [ ] Follows unified storage and module patterns
+- [ ] Includes comprehensive error handling
+- [ ] Updates relevant documentation
+- [ ] Passes all testing requirements
+- [ ] Maintains performance standards
+
+## 🎯 Integration Standards
+
+### Streamlit Page Integration
+New features MUST integrate with existing page structure:
+```python
+# Required integration pattern
+def new_feature_page():
+    st.title("🔧 New Feature")
+    
+    # State management
+    if 'feature_state' not in st.session_state:
+        st.session_state.feature_state = {}
+    
+    # Feature implementation
+    # ...
+    
+    # Progress tracking
+    # Real-time status updates
+```
+
+### Module Development
+- **Core Modules:** Essential functionality in `modules/core/`
+- **Enterprise Modules:** Advanced features in `modules/enterprise/`
+- **Clean APIs:** Well-defined interfaces and error handling
+- **Configuration Integration:** Use centralized config system
+- **Performance Optimization:** Async operations and caching
+
+### Storage Integration
+All new features MUST use:
+- **[modules/enterprise/unified_storage_manager.py](mdc:modules/enterprise/unified_storage_manager.py)** for file operations
+- Symbolic link management for space efficiency
+- Cross-WebUI compatibility (A1111/ComfyUI/Forge)
+- Metadata tracking and integrity verification
+
+## 📊 Performance Monitoring
+
+### Key Metrics to Maintain
+- **Deployment Time:** Monitor single-cell launch speed
+- **Storage Efficiency:** Track space savings percentages
+- **Extension Compatibility:** Validate working extension count
+- **Platform Support:** Verify detection and optimization
+- **UI Responsiveness:** Monitor real-time update performance
+
+### Optimization Areas
+- **Download Management:** Async operations with aria2c
+- **Storage System:** Symbolic link efficiency
+- **Platform Detection:** Quick and accurate identification
+- **Theme Engine:** Efficient CSS and component rendering
+- **State Management:** Optimized Streamlit session handling
+
+## 🚨 Quality Gates
+
+### Before Merging Code
+- [ ] Single-cell architecture maintained
+- [ ] All tests pass including platform compatibility
+- [ ] Documentation updated with numbered system
+- [ ] AI-maintained documents triggered for update
+- [ ] Performance benchmarks met
+- [ ] No regression in existing functionality
+- [ ] Error handling comprehensive and user-friendly
+
+### Continuous Monitoring
+- Track deployment success rates across platforms
+- Monitor storage efficiency metrics
+- Validate extension compatibility regularly
+- Ensure documentation stays synchronized
+- Maintain AI-updated status documents
+
+---
+
+**This rule ensures all development maintains the unified architecture standards and integrates properly with the established system.**

@@ -1,0 +1,321 @@
+---
+description: SD WebUI Repository Architecture and Implementation Standards - UNIFIED APPROACH
+globs: ["**/*.py", "**/*.ipynb", "**/*.js", "**/*.css", "**/*.json", "**/*.md"]
+alwaysApply: true
+---
+
+# SD WebUI Repository Architecture Standards - UNIFIED SINGLE-CELL APPROACH
+
+## 🏛️ FUNDAMENTAL ARCHITECTURE PRINCIPLES
+
+### Notebook Structure (NON-NEGOTIABLE)
+- **SINGLE CELL ARCHITECTURE** - One cell launches everything
+- **Streamlit Middle Layer** - All operations through unified interface
+- **No Cell Dependencies** - No need to run cells in sequence
+- **Real-time State Management** - Streamlit handles all persistence
+- **Enterprise backend with unified frontend**
+
+### Required Single-Cell Structure
+```python
+#@title 🚀 Launch SD-DarkMaster-Pro Unified Interface
+# Single cell that:
+# 1. Detects platform and clones repository
+# 2. Installs requirements
+# 3. Launches Streamlit unified app
+# 4. Creates public tunnel
+# 5. Provides access URL
+```
+
+## 📊 CURRENT PROJECT STATUS (UNIFIED ARCHITECTURE)
+- **Architecture:** ✅ COMPLETE - Single-cell Streamlit middleware approach
+- **Unified App:** ✅ COMPLETE - comprehensive Streamlit interface
+- **Backend Scripts:** ✅ COMPLETE - All supporting modules implemented
+- **Theme Engine:** ✅ COMPLETE - Dark Mode Pro theme system
+- **Storage Manager:** ✅ COMPLETE - Unified storage with symbolic links
+- **Download Manager:** ✅ COMPLETE - Advanced async download system
+- **Platform Manager:** ✅ COMPLETE - 12+ platform detection
+
+## 📚 DOCUMENTATION STRUCTURE (UNIFIED PROJECT)
+Reference these numbered files in SD-DarkMaster-Unified/Docs/:
+- **01_README.md** - Project overview and usage instructions
+- **02_UNIFIED_SINGLE_CELL_APPROACH.md** - Core architecture documentation
+- **03_TECHNICAL_ARCHITECTURE_GUIDE.md** - Technical implementation details
+- **11_DYNAMIC_STATE_PROMPT.md** - AI-maintained real-time status
+- **12_AI_HANDOVER_DOCUMENT.md** - AI session context preservation
+- **13_DOCUMENTATION_INDEX.md** - Complete navigation guide
+- **scripts/unified_app.py** - Main Streamlit application
+- **.cursor/rules/complex.mdc** - This file - development standards
+
+## 🔄 FILE MAINTENANCE REQUIREMENTS (CRITICAL)
+
+### MANDATORY: Keep Documentation Updated
+- **ALWAYS** update documentation to reflect UNIFIED SINGLE-CELL approach
+- **NEVER** reference 5-cell architecture (that's the OLD project)
+- **ALWAYS** clean up any references to multi-cell structure
+- **UPDATE** any documentation when modifying unified app
+- **DELETE** any outdated multi-cell references
+- **MAINTAIN** single source of truth for unified approach
+
+### File Hygiene Rules:
+- Keep unified architecture documentation current in numbered system (01-13)
+- Remove any 5-cell architecture references from unified project
+- Update AI-maintained status documents (11, 12) automatically
+- Maintain clean unified project structure in SD-DarkMaster-Unified/
+- Reference only numbered documentation and unified_app.py
+- Use proper file organization: Unified/, 5Cell/, ToBeDeleted/, Utilities/
+
+## 📦 MANDATORY DATA SOURCE INTEGRATION
+
+### Required Base Data Files
+- MUST use `scripts/_models_data.py` for SD1.5 model data
+- MUST use `scripts/_xl_models_data.py` for SDXL model data
+- MUST use `scripts/_extensions.txt` for extension management
+- MUST implement unified storage via `modules/enterprise/unified_storage_manager.py`
+- MUST use `modules/core/platform_manager.py` for 12+ platform detection
+
+## 🎯 CRITICAL FEATURE REQUIREMENTS
+
+### Unified Streamlit Interface
+- **Single Entry Point** - One notebook cell launches everything
+- **Page-based Navigation** - Home, Setup, Models, Downloads, Launch, Storage
+- **Real-time Updates** - Live progress tracking and status
+- **State Persistence** - All selections saved in st.session_state
+- **Integrated Operations** - All functions accessible from UI
+
+### CivitAI Integration
+- Native CivitAI browser in Models page
+- Search, filter, and preview functionality
+- One-click download integration
+- Metadata preservation and organization
+- NSFW filtering and content management
+
+### Download Management
+- Advanced async download system with aria2c
+- Progress tracking with real-time updates
+- Queue management and batch operations
+- Error handling and retry logic
+- Audio notifications for completion
+
+### Storage System
+- Unified storage with symbolic links (66% space savings)
+- Cross-WebUI compatibility (A1111/ComfyUI/Forge)
+- Automatic organization and deduplication
+- Storage analytics and cleanup tools
+- Metadata tracking and integrity verification
+
+## 🌐 PLATFORM COMPATIBILITY
+
+### Supported Platforms (12+ Detected)
+- Google Colab with automatic tunnel setup
+- Kaggle with workspace configuration
+- Lightning.ai/Paperspace/RunPod/Vast.ai
+- Local environments with path detection
+- Azure/GCP/Lambda/Modal cloud platforms
+- Automatic optimization per platform
+
+## 🔧 TECHNICAL IMPLEMENTATION
+
+### Single-Cell Bootstrap Sequence
+```python
+# Platform detection and path setup
+# Repository cloning if needed
+# Requirements installation
+# Streamlit app launch
+# Tunnel creation (cloudflared/ngrok/localtunnel)
+# Public URL generation
+```
+
+### Unified App Structure
+```python
+# scripts/unified_app.py
+import streamlit as st
+
+pages = {
+    "🏠 Home": home_page,           # Dashboard and status
+    "⚙️ Setup": setup_page,         # Environment configuration
+    "📦 Models": models_page,        # Model selection and CivitAI
+    "💾 Downloads": downloads_page,  # Download management
+    "🚀 Launch": launch_page,       # WebUI launcher
+    "🧹 Storage": storage_page,     # Storage management
+    "📊 Monitor": monitor_page      # System monitoring
+}
+```
+
+### Backend Integration
+- **modules/core/** - Core system functionality
+  - `platform_manager.py` - 12+ platform detection
+  - `dual_framework_manager.py` - Streamlit/Gradio failover
+  - `darkpro_theme_engine.py` - Comprehensive theming
+
+- **modules/enterprise/** - Advanced features
+  - `unified_storage_manager.py` - Universal storage system
+  - `download_manager.py` - Advanced async downloads
+
+- **scripts/** - Supporting scripts
+  - `unified_app.py` - Main Streamlit application
+  - `civitai_browser.py` - CivitAI API integration
+  - `launch_anxiety_method.py` - Package-based WebUI deployment
+
+### Performance Optimizations (IMPLEMENTED)
+- **Async downloads**: Advanced download manager with progress tracking
+- **Unified storage**: Symbolic links for 66% space savings
+- **Package method**: Pre-configured WebUI deployment (20x faster)
+- **Theme engine**: Professional Dark Mode Pro styling
+- **Platform optimization**: Automatic configuration per environment
+
+## 🧪 TESTING REQUIREMENTS
+
+### Testing the Unified Approach
+```bash
+# Launch the unified interface
+jupyter notebook notebook/SD-DarkMaster-Pro-Unified.ipynb
+
+# Test Streamlit app directly
+streamlit run scripts/unified_app.py --server.port 8501
+
+# Test individual modules
+python -m scripts.setup
+python -m scripts.unified_app
+```
+
+### Critical Testing Rules
+- **ALWAYS** test the unified single-cell approach
+- **NEVER** test multi-cell architecture (obsolete)
+- **ALWAYS** verify Streamlit interface functionality
+- **TEST** all page navigation and operations
+- **VERIFY** tunnel creation and public access
+
+## 🎨 UI FRAMEWORK SELECTION
+
+### Unified Interface Implementation
+- **Primary**: Streamlit (unified dashboard interface)
+- **Theme**: Dark Mode Pro with comprehensive styling
+- **Navigation**: Page-based with sidebar selection
+- **State**: Persistent across pages via st.session_state
+- **Updates**: Real-time progress and status tracking
+
+## ✅ SUCCESS CRITERIA
+
+### User Experience Validation
+- User runs ONE cell → gets complete interface (ZERO additional steps)
+- All operations accessible through unified Streamlit UI
+- Real-time progress tracking for all operations
+- Persistent state across page navigation
+- Professional Dark Mode Pro styling
+- Public tunnel access from any device
+
+### Code Quality Standards
+- Single notebook cell launches everything
+- All complexity in backend modules and scripts
+- Comprehensive error handling with user-friendly messages
+- Real-time logging and status updates
+- Professional documentation and user guides
+
+## 🔑 KEY TERMINOLOGY
+
+### Unified Architecture Components
+- **Unified Interface**: Single Streamlit app handling all operations
+- **Single Cell**: One notebook cell that launches everything
+- **Middle Layer**: Streamlit app serving as middleware
+- **Page Navigation**: Tabbed interface with dedicated pages
+- **State Persistence**: All data maintained in st.session_state
+
+### Session Management
+- **Streamlit State**: All configuration in st.session_state
+- **Page Navigation**: Seamless transitions between functions
+- **Real-time Updates**: Live progress and status monitoring
+- **Configuration Export**: Save/load settings functionality
+
+## 🚨 VALIDATION CHECKLIST
+
+### Unified Architecture
+- Single notebook cell launches complete interface
+- Streamlit app provides all functionality
+- No cell execution order dependencies
+- Real-time state management working
+- Professional UI with Dark Mode Pro theme
+
+### Feature Integration
+- CivitAI browser integrated in Models page
+- Download manager with async operations
+- Storage system with unified management
+- WebUI launcher with multiple options
+- Platform detection and optimization
+
+### Performance Validation
+- Advanced download speeds with async operations
+- Storage efficiency with symbolic links
+- Fast WebUI deployment with package method
+- Responsive UI with real-time updates
+
+## 🚫 ANTI-PATTERNS TO AVOID
+
+### Never Do These
+- Reference 5-cell architecture (obsolete)
+- Create multi-cell dependencies
+- Skip unified interface approach
+- Implement basic command-line interfaces
+- Ignore Streamlit state management
+- Skip Dark Mode Pro theming
+- Create separate tools outside unified app
+
+### Architecture Anti-Patterns
+- Multi-cell notebook structure
+- Cell execution order dependencies
+- Separate interfaces for different operations
+- Command-line only tools
+- Basic styling without theme engine
+
+## 📊 CURRENT IMPLEMENTATION STATUS
+
+### Completed Features (UNIFIED):
+✅ **Single-Cell Architecture** - One cell launches everything
+✅ **Unified Streamlit Interface** - Complete dashboard with navigation
+✅ **Advanced Backend** - All core modules implemented
+✅ **Theme Engine** - Professional Dark Mode Pro styling
+✅ **Platform Manager** - 12+ platform detection and optimization
+✅ **Storage Manager** - Unified storage with symbolic links
+✅ **Download Manager** - Advanced async download system
+✅ **CivitAI Integration** - Native browser and search
+✅ **WebUI Launcher** - Multi-WebUI support with package method
+
+### Architecture Benefits:
+- **Simplicity**: One cell → complete platform
+- **Consistency**: Unified interface for all operations
+- **Reliability**: No cell dependency issues
+- **Scalability**: Modular backend with clean separation
+- **Performance**: Advanced optimizations throughout
+
+## 🎯 DEVELOPMENT FOCUS
+
+### Primary Development Areas:
+1. **Unified App Enhancement** - scripts/unified_app.py improvements
+2. **Module Integration** - Backend module connectivity
+3. **Theme Refinement** - Dark Mode Pro styling enhancements
+4. **Platform Optimization** - Per-platform feature tuning
+5. **Documentation Updates** - Keep unified approach current
+
+### Critical Success Factors:
+- Maintain single-cell simplicity
+- Enhance unified interface functionality
+- Optimize backend module performance
+- Keep documentation aligned with unified approach
+- Ensure cross-platform compatibility
+
+## 📝 IMMEDIATE MAINTENANCE TASKS
+
+When working on this project:
+1. **Update this file** to reflect unified approach accurately
+2. **Reference unified_app.py** as the primary interface
+3. **Document unified architecture** in all references
+4. **Remove 5-cell references** from any documentation
+5. **Maintain theme consistency** across all components
+
+---
+
+**This is the UNIFIED SINGLE-CELL STREAMLIT APPROACH project. All documentation and development must reflect this architecture, NOT the obsolete 5-cell approach.**
+
+@scripts/unified_app.py
+@UNIFIED_SINGLE_CELL_APPROACH.md
+@modules/core/platform_manager.py
+@modules/enterprise/unified_storage_manager.py

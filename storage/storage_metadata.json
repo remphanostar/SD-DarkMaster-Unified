@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "created": 1755659130.1797988,
+  "structure": {
+    "models": {
+      "checkpoints": "/workspace/SD-DarkMaster-Pro/storage/models/Stable-diffusion",
+      "vae": "/workspace/SD-DarkMaster-Pro/storage/models/VAE",
+      "lora": "/workspace/SD-DarkMaster-Pro/storage/models/Lora",
+      "lycoris": "/workspace/SD-DarkMaster-Pro/storage/models/LyCORIS",
+      "embeddings": "/workspace/SD-DarkMaster-Pro/storage/embeddings",
+      "hypernetworks": "/workspace/SD-DarkMaster-Pro/storage/models/hypernetworks",
+      "controlnet": "/workspace/SD-DarkMaster-Pro/storage/models/ControlNet",
+      "upscalers": "/workspace/SD-DarkMaster-Pro/storage/models/ESRGAN",
+      "clip": "/workspace/SD-DarkMaster-Pro/storage/models/CLIP",
+      "clip_vision": "/workspace/SD-DarkMaster-Pro/storage/models/CLIP_vision",
+      "diffusers": "/workspace/SD-DarkMaster-Pro/storage/models/diffusers"
+    },
+    "outputs": {
+      "txt2img": "/workspace/SD-DarkMaster-Pro/storage/outputs/txt2img-images",
+      "img2img": "/workspace/SD-DarkMaster-Pro/storage/outputs/img2img-images",
+      "extras": "/workspace/SD-DarkMaster-Pro/storage/outputs/extras-images",
+      "grids": "/workspace/SD-DarkMaster-Pro/storage/outputs/txt2img-grids",
+      "samples": "/workspace/SD-DarkMaster-Pro/storage/outputs/samples",
+      "temp": "/workspace/SD-DarkMaster-Pro/storage/outputs/temp"
+    },
+    "cache": {
+      "huggingface": "/workspace/SD-DarkMaster-Pro/storage/cache/huggingface",
+      "clip": "/workspace/SD-DarkMaster-Pro/storage/cache/clip",
+      "torch": "/workspace/SD-DarkMaster-Pro/storage/cache/torch",
+      "transformers": "/workspace/SD-DarkMaster-Pro/storage/cache/transformers"
+    },
+    "configs": {
+      "webui": "/workspace/SD-DarkMaster-Pro/storage/configs/webui",
+      "models": "/workspace/SD-DarkMaster-Pro/storage/configs/models",
+      "presets": "/workspace/SD-DarkMaster-Pro/storage/configs/presets"
+    }
+  }
+}

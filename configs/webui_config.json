@@ -1,0 +1,6 @@
+{
+  "webui_type": "Automatic1111",
+  "port": 7860,
+  "share": false,
+  "api": true
+}

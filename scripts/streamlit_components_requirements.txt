@@ -1,0 +1,30 @@
+# Enhanced Streamlit Components for SD-DarkMaster-Pro UI
+# Install these for the best UI experience
+
+# Core Streamlit
+streamlit>=1.29.0
+
+# Navigation & Layout
+streamlit-option-menu>=0.3.6  # Better navigation menu with icons
+streamlit-antd-components>=0.3.0  # Ant Design components (buttons, switches, etc.)
+
+# UI Components
+streamlit-card>=0.0.5  # Card components for model display
+streamlit-extras>=0.3.6  # Colored headers, metric cards, badges, etc.
+streamlit-elements>=0.1.0  # Material UI components
+
+# Data Display
+streamlit-aggrid>=0.3.4  # Advanced grid for model lists
+streamlit-toggle-switch>=1.0.2  # Better toggle switches
+
+# Visual Enhancements
+streamlit-lottie>=0.0.5  # Animations
+streamlit-ace>=0.1.1  # Code editor for output console
+
+# Optional but recommended
+streamlit-pills>=0.3.0  # Pill/tag components for model tags
+streamlit-timeline>=0.0.2  # Timeline for download progress
+streamlit-faker>=0.0.3  # For demo data if needed
+
+# To install all:
+# pip install -r streamlit_components_requirements.txt

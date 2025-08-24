@@ -1,0 +1,9 @@
+{
+  "theme": "dark",
+  "primary_color": "#10B981",
+  "background_color": "#111827",
+  "text_color": "#6B7280",
+  "enable_queue": true,
+  "share": false,
+  "server_port": 7860
+}

@@ -1,0 +1,140 @@
+---
+description: Unified single-cell architecture enforcement and validation
+alwaysApply: true
+---
+
+# Unified Single-Cell Architecture Enforcement
+
+## 🏛️ MANDATORY ARCHITECTURE PRINCIPLES
+
+### Single-Cell Architecture (NON-NEGOTIABLE)
+- **ONE CELL LAUNCHES EVERYTHING** - No multi-cell dependencies
+- **Streamlit Middleware** - All operations through [unified_app.py](mdc:scripts/unified_app.py)
+- **State Persistence** - All data in `st.session_state`
+- **Real-time Updates** - Live progress tracking
+- **Professional UI** - Dark Mode Pro theme
+
+### Entry Point Validation
+The ONLY valid entry point is:
+```python
+#@title 🚀 Launch SD-DarkMaster-Pro Unified Interface
+# Single cell that launches the complete platform
+```
+
+## 📦 Core File Structure (IMMUTABLE)
+
+### Primary Interface
+- **[scripts/unified_app.py](mdc:scripts/unified_app.py)** - Main Streamlit application
+- **notebook/SD-DarkMaster-Pro-Unified.ipynb** - Single notebook cell
+
+### Backend Modules
+- **[modules/core/platform_manager.py](mdc:modules/core/platform_manager.py)** - 12+ platform detection
+- **[modules/enterprise/unified_storage_manager.py](mdc:modules/enterprise/unified_storage_manager.py)** - Storage system
+- **[modules/core/darkpro_theme_engine.py](mdc:modules/core/darkpro_theme_engine.py)** - Theme system
+
+### Data Sources (REQUIRED)
+- **[scripts/_models_data.py](mdc:scripts/_models_data.py)** - SD1.5 model data
+- **[scripts/_xl_models_data.py](mdc:scripts/_xl_models_data.py)** - SDXL model data
+- **[scripts/_extensions.txt](mdc:scripts/_extensions.txt)** - Extension management
+
+## 🚫 PROHIBITED ARCHITECTURES
+
+### NEVER Implement These
+- Multi-cell notebook structure
+- Cell execution order dependencies
+- Separate interfaces for different operations
+- Command-line only tools
+- Basic styling without theme engine
+- Storage systems outside unified manager
+
+### Obsolete References
+- NEVER reference 5-cell architecture
+- NEVER create cell dependencies
+- NEVER skip Streamlit middleware
+- NEVER implement separate UI tools
+- NEVER bypass unified storage system
+
+## ✅ VALIDATION REQUIREMENTS
+
+### Architecture Compliance
+Every implementation MUST satisfy:
+- [ ] Single notebook cell launches complete platform
+- [ ] All operations accessible through Streamlit UI
+- [ ] No cell execution order dependencies
+- [ ] Professional Dark Mode Pro styling
+- [ ] Unified storage system integration
+- [ ] Platform detection and optimization
+- [ ] Real-time progress tracking
+
+### Performance Standards
+- **Deployment Speed:** ≤ 30 seconds (80x faster than traditional)
+- **Storage Efficiency:** ≥ 68% space savings through unified storage
+- **Extension Compatibility:** ≥ 95% (29/31 extensions)
+- **Platform Support:** 12+ platforms with auto-optimization
+- **UI Responsiveness:** Real-time updates and feedback
+
+## 🔧 Implementation Standards
+
+### Streamlit App Structure
+```python
+# Required page structure in unified_app.py
+pages = {
+    "🏠 Home": home_page,           # Dashboard and status
+    "⚙️ Setup": setup_page,         # Environment configuration  
+    "📦 Models": models_page,        # Model selection and CivitAI
+    "💾 Downloads": downloads_page,  # Download management
+    "🚀 Launch": launch_page,       # WebUI launcher
+    "🧹 Storage": storage_page,     # Storage management
+    "📊 Monitor": monitor_page      # System monitoring
+}
+```
+
+### State Management
+- ALL configuration in `st.session_state`
+- Persistent state across page navigation
+- Real-time synchronization between components
+- Configuration export/import capabilities
+
+### Theme Integration
+- Professional Dark Mode Pro styling
+- Consistent visual identity
+- Responsive design patterns
+- Accessibility compliance
+
+## 🎯 Success Criteria Validation
+
+### User Experience Requirements
+- User runs ONE cell → complete platform (ZERO additional steps)
+- Professional interface accessible via public URL
+- All operations available through unified dashboard
+- Real-time progress tracking for all processes
+- Cross-platform compatibility (12+ platforms)
+
+### Technical Implementation
+- Single-cell architecture maintained
+- Streamlit middleware handling all operations
+- Unified storage system providing 68% space savings
+- Package method enabling 80x faster deployment
+- Extension system supporting 95% compatibility
+
+## 🔄 Continuous Compliance
+
+### Architecture Monitoring
+Regularly verify:
+- No multi-cell dependencies introduced
+- Streamlit remains primary interface
+- Unified storage system properly integrated
+- Performance metrics maintained
+- Platform compatibility preserved
+
+### Update Guidelines
+When modifying the system:
+- Maintain single-cell simplicity
+- Preserve Streamlit middleware approach
+- Keep unified storage integration
+- Update documentation to reflect changes
+- Validate performance benchmarks
+
+---
+
+**This rule enforces the unified single-cell architecture and prevents regression to obsolete multi-cell patterns.**
