@@ -1,0 +1,43 @@
+🎨 CivitAI UI Test Suite - Download Instructions
+===============================================
+
+📦 EASY DOWNLOAD:
+1. Download this entire "UI-Test" folder to your Windows PC
+2. Extract if zipped
+3. Double-click "INSTALL_AND_TEST.bat"
+4. Follow the prompts!
+
+📁 FOLDER CONTENTS (11 files):
+✅ INSTALL_AND_TEST.bat        # ⭐ START HERE - One-click installer
+✅ START_TEST.bat              # Quick launcher (after install)
+✅ civitai_test_basic.py       # Main Streamlit UI app
+✅ civitai_manual_test.py      # Command-line tester
+✅ validate_setup.py           # Setup validator
+✅ run_civitai_tests.bat       # Windows batch runner
+✅ run_civitai_tests.ps1       # PowerShell runner
+✅ civitai_requirements.txt    # Python packages
+✅ README.md                   # Complete guide
+✅ WINDOWS_QUICK_START.md      # Quick instructions
+✅ CIVITAI_TEST_README.md      # Technical details
+
+🎯 WHAT YOU'LL TEST:
+- CivitAI model search and filtering
+- Model details and version browsing  
+- File download with progress tracking
+- Streamlit UI functionality
+- Integration readiness for Linux deployment
+
+💻 REQUIREMENTS:
+- Windows 10/11
+- Python 3.7+ (script will help install if needed)
+- Internet connection
+- ~1GB free space
+
+🚀 SUPER QUICK START:
+1. Download folder → Extract → Double-click "INSTALL_AND_TEST.bat"
+2. That's it! Everything installs automatically.
+
+📞 NEED HELP?
+Read README.md for complete instructions and troubleshooting.
+
+Happy testing! 🎉
