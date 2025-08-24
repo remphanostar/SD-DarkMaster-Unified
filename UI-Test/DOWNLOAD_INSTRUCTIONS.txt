@@ -27,9 +27,15 @@
 🎯 WHAT YOU'LL TEST:
 - CivitAI model search and filtering
 - Model details and version browsing  
-- File download with progress tracking
+- File download with progress tracking (with API key!)
 - Streamlit UI functionality
 - Integration readiness for Linux deployment
+
+🔑 API KEY PRE-CONFIGURED:
+- Full CivitAI access already set up
+- Download models without 401 errors
+- NSFW content enabled for complete testing
+- No manual API key setup required
 
 💻 REQUIREMENTS:
 - Windows 10/11

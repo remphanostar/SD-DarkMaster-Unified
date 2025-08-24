@@ -17,24 +17,26 @@ import time
 
 class CivitAIBasic:
     def __init__(self, api_key=None):
-        self.api_key = api_key
+        # Use hardcoded API key if none provided
+        self.api_key = api_key or "ff14ef326fa02885e8202e4d44fc9a13"
         self.base_url = "https://civitai.com/api/v1"
         self.headers = {}
-        if api_key:
-            self.headers['Authorization'] = f'Bearer {api_key}'
+        if self.api_key:
+            self.headers['Authorization'] = f'Bearer {self.api_key}'
     
-    def search_models(self, query="", limit=10, sort="Highest Rated", model_type=None):
+    def search_models(self, query="", limit=25, sort="Highest Rated", model_type=None):
         """Basic model search"""
         
         params = {
-            'limit': limit,
-            'sort': sort
+            'limit': min(limit, 100),  # CivitAI max is usually 100
+            'sort': sort,
+            'nsfw': 'true'  # Include NSFW results for broader search
         }
         
-        if query:
-            params['query'] = query
+        if query and query.strip():
+            params['query'] = query.strip()
             
-        if model_type:
+        if model_type and model_type != "All":
             params['types'] = [model_type]
             
         if self.api_key:
