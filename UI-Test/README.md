@@ -8,7 +8,10 @@ This is a **complete testing environment** for CivitAI integration that you can 
 
 ```
 UI-Test/
-├── 🚀 INSTALL_AND_TEST.bat        # ⭐ ONE-CLICK INSTALLER (START HERE)
+├── 🧪 START_TESTING_GUI.bat       # ⭐ PROFESSIONAL GUI LAUNCHER (BEST!)
+├── 🧪 START_TESTING_GUI.ps1       # PowerShell GUI launcher  
+├── 🧪 testing_launcher.py         # Professional testing dashboard
+├── 🚀 INSTALL_AND_TEST.bat        # ⭐ ONE-CLICK INSTALLER (ALTERNATIVE)
 ├── 🎮 START_TEST.bat              # Quick launcher after installation
 ├── 
 ├── 📱 CORE APPLICATIONS:
@@ -25,6 +28,7 @@ UI-Test/
 ├── 
 ├── 📖 DOCUMENTATION:
 ├── ├── README.md                   # This comprehensive guide
+├── ├── TESTING_GUI_README.md      # GUI testing interface guide
 ├── ├── WINDOWS_QUICK_START.md     # Quick start instructions
 ├── ├── CIVITAI_TEST_README.md     # Detailed technical docs
 └── 
@@ -33,12 +37,20 @@ UI-Test/
 ## 🚀 Super Easy Start (Recommended)
 
 ### 🎯 Just Want It To Work?
+
+#### **🧪 Option 1: Professional GUI Interface (BEST)**
+1. **Download** this entire `UI-Test` folder
+2. **Double-click** `START_TESTING_GUI.bat` 
+3. **Professional interface** opens at http://localhost:8502
+4. **Complete testing dashboard** with Dark Mode Pro theme!
+
+#### **🔧 Option 2: Auto-Install & Test**
 1. **Download** this entire `UI-Test` folder
 2. **Double-click** `INSTALL_AND_TEST.bat`
 3. **Follow the prompts** - it installs everything automatically!
 4. **Test in your browser** at http://localhost:8501
 
-That's it! 🎉
+**Both work perfectly! 🎉**
 
 ## 🛠️ What Gets Installed & Tested
 

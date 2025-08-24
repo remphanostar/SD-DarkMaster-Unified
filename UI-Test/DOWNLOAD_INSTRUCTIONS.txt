@@ -7,8 +7,11 @@
 3. Double-click "INSTALL_AND_TEST.bat"
 4. Follow the prompts!
 
-📁 FOLDER CONTENTS (11 files):
-✅ INSTALL_AND_TEST.bat        # ⭐ START HERE - One-click installer
+📁 FOLDER CONTENTS (16 files):
+✅ START_TESTING_GUI.bat       # 🧪 PROFESSIONAL GUI LAUNCHER (BEST!)
+✅ START_TESTING_GUI.ps1       # 🧪 PowerShell GUI launcher
+✅ testing_launcher.py         # 🧪 Professional testing dashboard
+✅ INSTALL_AND_TEST.bat        # ⭐ One-click installer (alternative)
 ✅ START_TEST.bat              # Quick launcher (after install)
 ✅ civitai_test_basic.py       # Main Streamlit UI app
 ✅ civitai_manual_test.py      # Command-line tester
@@ -17,6 +20,7 @@
 ✅ run_civitai_tests.ps1       # PowerShell runner
 ✅ civitai_requirements.txt    # Python packages
 ✅ README.md                   # Complete guide
+✅ TESTING_GUI_README.md       # GUI interface guide
 ✅ WINDOWS_QUICK_START.md      # Quick instructions
 ✅ CIVITAI_TEST_README.md      # Technical details
 
@@ -34,8 +38,14 @@
 - ~1GB free space
 
 🚀 SUPER QUICK START:
+
+🧪 OPTION 1 (BEST): Professional GUI Interface
+1. Download folder → Extract → Double-click "START_TESTING_GUI.bat"
+2. Professional testing dashboard opens at http://localhost:8502
+
+⚙️ OPTION 2: Auto-Install & Test  
 1. Download folder → Extract → Double-click "INSTALL_AND_TEST.bat"
-2. That's it! Everything installs automatically.
+2. Everything installs automatically, then test at http://localhost:8501
 
 📞 NEED HELP?
 Read README.md for complete instructions and troubleshooting.
