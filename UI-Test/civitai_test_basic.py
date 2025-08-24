@@ -24,18 +24,19 @@ class CivitAIBasic:
         if api_key:
             self.headers['Authorization'] = f'Bearer {api_key}'
     
-    def search_models(self, query="", limit=10, sort="Highest Rated", model_type=None):
+    def search_models(self, query="", limit=50, sort="Highest Rated", model_type=None):
         """Basic model search"""
         
         params = {
-            'limit': limit,
-            'sort': sort
+            'limit': min(limit, 100),  # CivitAI max is usually 100
+            'sort': sort,
+            'nsfw': 'true'  # Include NSFW results for broader search
         }
         
-        if query:
-            params['query'] = query
+        if query and query.strip():
+            params['query'] = query.strip()
             
-        if model_type:
+        if model_type and model_type != "All":
             params['types'] = [model_type]
             
         if self.api_key:
@@ -193,7 +194,7 @@ def main():
         )
     
     with col3:
-        limit = st.slider("Results", 5, 20, 10)
+        limit = st.slider("Results", 10, 100, 50)
     
     # Search button
     if st.button("🔍 Search Models"):

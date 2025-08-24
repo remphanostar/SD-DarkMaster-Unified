@@ -40,9 +40,11 @@ UI-Test/
 
 #### **🧪 Option 1: Professional GUI Interface (BEST)**
 1. **Download** this entire `UI-Test` folder
-2. **Double-click** `START_TESTING_GUI.bat` 
+2. **Double-click** `START_TESTING_GUI_SIMPLE.bat` 
 3. **Professional interface** opens at http://localhost:8502
 4. **Complete testing dashboard** with Dark Mode Pro theme!
+
+**Note:** Use `START_TESTING_GUI_SIMPLE.bat` if you encounter Unicode character errors
 
 #### **🔧 Option 2: Auto-Install & Test**
 1. **Download** this entire `UI-Test` folder

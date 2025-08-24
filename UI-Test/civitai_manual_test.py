@@ -160,7 +160,7 @@ def test_basic_search(civitai):
     # Search for realistic models
     search_results = civitai.search_models(
         query="realistic",
-        limit=5,
+        limit=25,
         sort="Highest Rated",
         model_type="Checkpoint"
     )

@@ -40,8 +40,10 @@
 🚀 SUPER QUICK START:
 
 🧪 OPTION 1 (BEST): Professional GUI Interface
-1. Download folder → Extract → Double-click "START_TESTING_GUI.bat"
+1. Download folder → Extract → Double-click "START_TESTING_GUI_SIMPLE.bat"
 2. Professional testing dashboard opens at http://localhost:8502
+
+Note: If Unicode errors occur, use START_TESTING_GUI_SIMPLE.bat instead
 
 ⚙️ OPTION 2: Auto-Install & Test  
 1. Download folder → Extract → Double-click "INSTALL_AND_TEST.bat"
