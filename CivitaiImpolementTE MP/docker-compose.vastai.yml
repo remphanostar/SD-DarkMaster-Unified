@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  sd-darkmaster-pro:
+    build: .
+    ports:
+      - "8501:8501"  # Streamlit
+      - "7860:7860"  # WebUI
+    volumes:
+      - ./models:/app/models
+      - ./downloads:/app/downloads
+      - ./outputs:/app/outputs
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - CUDA_VISIBLE_DEVICES=0
+      - PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
+      - STREAMLIT_SERVER_HEADLESS=true
+    runtime: nvidia
+    restart: unless-stopped
+
+    # Resource limits for Vast.ai optimization
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
