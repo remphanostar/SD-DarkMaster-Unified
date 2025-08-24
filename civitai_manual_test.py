@@ -278,9 +278,13 @@ def test_small_download(civitai, model_details):
         
         if file_size > 100 * 1024:  # > 100MB
             print(f"⚠️ Large file warning: {file_size / 1024:.1f} MB")
-            response = input("Continue? (y/n): ").lower().strip()
-            if response != 'y':
-                print("⏭️ Download skipped")
+            try:
+                response = input("Continue? (y/n): ").lower().strip()
+                if response != 'y':
+                    print("⏭️ Download skipped")
+                    return False
+            except (EOFError, KeyboardInterrupt):
+                print("\n⏭️ Download skipped (interrupted)")
                 return False
         
         # Download
