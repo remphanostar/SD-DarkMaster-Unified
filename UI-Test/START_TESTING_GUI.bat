@@ -85,6 +85,10 @@ echo.
 
 timeout /t 3 >nul
 
+REM Set UTF-8 encoding for better Unicode support
+chcp 65001 >nul 2>&1
+set PYTHONIOENCODING=utf-8
+
 REM Launch the testing GUI
 echo 🎨 Launching GUI interface...
 start http://localhost:8502

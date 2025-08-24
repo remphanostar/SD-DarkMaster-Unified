@@ -96,6 +96,10 @@ Write-Host ""
 
 Start-Sleep -Seconds 3
 
+# Set UTF-8 encoding for better Unicode support
+$env:PYTHONIOENCODING = "utf-8"
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
 # Launch the testing GUI
 Write-Host "🎨 Launching GUI interface..." -ForegroundColor Green
 

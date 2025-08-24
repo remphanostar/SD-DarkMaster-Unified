@@ -271,7 +271,9 @@ def run_command(cmd: str, capture_output: bool = True, timeout: int = 300) -> Tu
             shell=True, 
             capture_output=capture_output, 
             text=True, 
-            timeout=timeout
+            timeout=timeout,
+            encoding='utf-8',
+            errors='replace'
         )
         return result.returncode, result.stdout + result.stderr
     except subprocess.TimeoutExpired:
@@ -836,7 +838,9 @@ def launch_test(script_id: str):
                 cmd.split(),
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
-                text=True
+                text=True,
+                encoding='utf-8',
+                errors='replace'
             )
             st.session_state.test_processes[script_id] = process
             add_activity_log(f"Launched {script_info['name']} (PID: {process.pid})", "success")
@@ -854,7 +858,9 @@ def launch_test(script_id: str):
                 shell=True,
                 capture_output=True,
                 text=True,
-                timeout=300
+                timeout=300,
+                encoding='utf-8',
+                errors='replace'
             )
             end_time = time.time()
             
