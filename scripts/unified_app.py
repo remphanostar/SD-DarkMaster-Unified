@@ -140,17 +140,23 @@ def setup_page():
     with col2:
         st.info(f"Python: {sys.version.split()[0]}")
     with col3:
-        gpu_check = subprocess.run(['nvidia-smi'], capture_output=True, text=True)
-        if gpu_check.returncode == 0:
-            # Parse GPU name
-            gpu_name = "GPU Found"
-            for line in gpu_check.stdout.split('\n'):
-                if 'NVIDIA' in line and 'Off' not in line:
-                    gpu_name = line.split('|')[1].strip().split()[0]
-                    break
-            st.success(f"GPU: {gpu_name}")
-        else:
-            st.error("GPU: Not Found")
+        try:
+            gpu_check = subprocess.run(['nvidia-smi'], capture_output=True, text=True, timeout=3)
+            if gpu_check.returncode == 0:
+                # Parse GPU name
+                gpu_name = "GPU Found"
+                for line in gpu_check.stdout.split('\n'):
+                    if 'NVIDIA' in line and 'Off' not in line:
+                        try:
+                            gpu_name = line.split('|')[1].strip().split()[0]
+                            break
+                        except:
+                            pass
+                st.success(f"GPU: {gpu_name}")
+            else:
+                st.info("GPU: CPU Only (No NVIDIA GPU)")
+        except (subprocess.TimeoutExpired, FileNotFoundError, Exception):
+            st.info("GPU: CPU Only (Mock Mode)")
     with col4:
         st.info(f"RAM: {psutil.virtual_memory().total // (1024**3)} GB")
     
@@ -618,9 +624,29 @@ def render_environment_info():
     """Environment Info Panel (Top-Left)"""
     platform = "Colab" if os.path.exists('/content') else "Kaggle" if os.path.exists('/kaggle') else "Vast" if os.path.exists('/workspace') else "Local"
     
-    # GPU Detection
-    gpu_check = subprocess.run(['nvidia-smi'], capture_output=True, text=True)
-    gpu_status = "Yes" if gpu_check.returncode == 0 else "No"
+    # GPU Detection (Mock-friendly)
+    def get_gpu_status():
+        try:
+            gpu_check = subprocess.run(['nvidia-smi'], capture_output=True, text=True, timeout=3)
+            if gpu_check.returncode == 0:
+                # Try to parse actual GPU name
+                for line in gpu_check.stdout.split('\n'):
+                    if 'NVIDIA' in line and '|' in line and 'Off' not in line:
+                        try:
+                            gpu_name = line.split('|')[1].strip().split()[0:2]
+                            return f"Yes ({' '.join(gpu_name)})"
+                        except:
+                            pass
+                return "Yes (NVIDIA)"
+            else:
+                return "No (CPU Only)"
+        except (subprocess.TimeoutExpired, FileNotFoundError, Exception):
+            # Mock GPU for development/testing
+            import random
+            mock_gpus = ["No (CPU Only)", "Mock RTX 4090", "Mock GTX 1080", "Mock T4"]
+            return random.choice(mock_gpus)
+    
+    gpu_status = get_gpu_status()
     
     # Hardware info
     ram_gb = psutil.virtual_memory().total // (1024**3)
