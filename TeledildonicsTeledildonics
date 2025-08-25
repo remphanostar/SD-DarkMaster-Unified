@@ -1,0 +1,14 @@
+[33m40f8aad[m[33m ([m[1;31morigin/cursor/setup-unified-ai-art-platform-environment-6b91[m[33m)[m Add pre-configured API key for seamless CivitAI testing
+[33md3530c7[m Add CivitAI testing suite with Streamlit UI and test management
+[33me613f4e[m Enhance CivitAI testing UI with improved search and new simple launcher
+[33m4f6ac9b[m Improve Unicode and encoding support across testing scripts
+[33m852576d[m Checkpoint before follow-up message
+[33mcd910f2[m Add professional GUI testing interface with multiple test management features
+[33mc8e0c9f[m Checkpoint before follow-up message
+[33md5fb284[m Add CivitAI UI test suite for model search and download
+[33m24cc98e[m Checkpoint before follow-up message
+[33med83344[m Add CivitAI basic search and download test implementation
+[33m5a791f3[m Checkpoint before follow-up message
+[33maa7f800[m Checkpoint before follow-up message
+[33m1cd0ebf[m Checkpoint before follow-up message
+[33m9469ef8[m Create comprehensive Streamlit app for SD-DarkMaster-Pro platform management
